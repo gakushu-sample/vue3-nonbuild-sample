@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="js/vue.global.prod.js"></script>
+  <!-- js 内で import を使うためには、 type="module" をつける必要がある。IE非対応 -->
+  <script defer type="module" src="js/contact.js"></script>
+</head>
+
+<body>
+  <div id="header" v-cloak>
+    <header-comp :active_title="active_title"></header-comp>
+  </div>
+
+  <div id="main-contents" v-cloak>
+    <main class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="card green darken-2 main-title">
+            <div class="card-content white-text center-align main-title">
+              <div class="main-title-area">
+                <div class="main-title-content">
+                  <span class="card-title">Contact</span>
+                  <p>お問い合わせ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <nav class="z-depth-0 breadcrumb-area transparent">
+            <div class="nav-wrapper">
+              <a href="/" class="breadcrumb">Home</a>
+              <a href="contact.html" class="breadcrumb">Contact</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row green lighten-4">
+        <div class="col s10 offset-s1">
+          <div class="card">
+            <div class="card-content">
+              <form>
+                <p class="center-align">
+                  弊社にご興味をお持ちいただきありがとうございます。
+                  <br>下記をご記入の上、「送信」ボタンをクリックしてください。
+                </p>
+                <div class="row" v-for="item in input_items" :key="item.id">
+                  <div class="col l3 hide-on-med-and-down flex-container">
+                    <div>
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  <div class="col l9 m12 s12">
+                    <div class="input-field">
+                      <input :type="item.type" :id="item.id" v-model="item.value" class="validate" :required="item.require">
+                      <label :for="item.id">{{ item.name }}</label>
+                      <!-- <span class="helper-text" data-error="wrong" data-success=""></span> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 center-align">同意いただける場合は「同意する」をご選択ください。</div>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <p class="center-align">
+                      <label>
+                        <input type="checkbox">
+                        <span>個人情報の取扱いについて同意する</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 center-align">
+                    <button type="button" @click="check" class="waves-effect waves-light btn">送信</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer" v-cloak>
+    <footer-comp></footer-comp>
+  </div>
+</body>
+
+</html>

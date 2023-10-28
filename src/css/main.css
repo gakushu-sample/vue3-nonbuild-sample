@@ -1,0 +1,73 @@
+html,
+body {
+    font-family: 'Nunito', 'Noto Sans JP', sans-serif;
+    color: #4b4b4b;
+    background-color: #eee;
+    letter-spacing: 0.1rem;
+}
+footer {
+    text-align: center;
+}
+/* HTML 上で v-cloak をつけておいて、 Vue3 の処理完了まで非表示にするために使用する。Vue3 の処理が完了すると、表示される */
+[v-cloak] {
+    display: none;
+}
+header .brand-logo {
+    padding-left: 10px;
+}
+.main-title {
+    height: 200px;
+}
+.main-title-area {
+    display: flex;
+    height: 100%;
+}
+
+.main-title-content {
+    flex: 0 0 100%;
+    align-self: center;
+}
+.breadcrumb-area {
+    height: inherit !important;
+    line-height: inherit !important;
+}
+.breadcrumb {
+    color: #8f8f8f;
+}
+.breadcrumb:last-child {
+    color: #4b4b4b;
+}
+.breadcrumb::before {
+    color: #4b4b4b;
+    font-size: inherit;
+}
+
+/* 下線を付ける */
+footer a {
+    position: relative;
+}
+
+footer a:before {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 1px;
+    background-color: #eee;
+    transition: 0.2s;
+}
+
+footer a:before {
+    left: 0;
+}
+
+footer a:hover:before {
+    width: 100%;
+}
+/* 下線を付ける */
+.flex-container {
+    display: flex;
+    align-items: center;
+    height: 84px;
+}

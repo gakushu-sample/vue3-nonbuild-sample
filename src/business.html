@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="js/vue.global.prod.js"></script>
+  <!-- js 内で import を使うためには、 type="module" をつける必要がある。IE非対応 -->
+  <script defer type="module" src="js/business.js"></script>
+</head>
+
+<body>
+  <div id="header" v-cloak>
+    <header-comp :active_title="active_title"></header-comp>
+  </div>
+  <div id="main-contents" v-cloak>
+    <main class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="card green darken-2 main-title">
+            <div class="card-content white-text center-align main-title">
+              <div class="main-title-area">
+                <div class="main-title-content">
+                  <span class="card-title">Business</span>
+                  <p>事業内容</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <nav class="z-depth-0 breadcrumb-area transparent">
+            <div class="nav-wrapper">
+              <a href="/" class="breadcrumb">Home</a>
+              <a href="business.html" class="breadcrumb">Business</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row green lighten-4" v-for="menu in menu_list" :key="menu.cat">
+        <div class="col l6 m12 s12" v-if="menu.pos == 'left'">
+          <h5 class="green lighten-2">{{ menu.cat }}</h5>
+          <p v-html="menu.desc"></p>
+        </div>
+        <div class="col l6 m12 s12">
+          <div class="card blue-grey darken-1 z-depth-3">
+            <a :href="menu.href">
+              <div class="card-content white-text">
+                <span class="card-title center-align">{{ menu.title }}</span>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col l6 m12 s12" v-if="menu.pos == 'right'">
+          <h5 class="green lighten-2">{{ menu.cat }}</h5>
+          <p v-html="menu.desc"></p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="footer" v-cloak>
+    <footer-comp></footer-comp>
+  </div>
+</body>
+
+</html>
